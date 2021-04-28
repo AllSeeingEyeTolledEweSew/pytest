@@ -391,6 +391,7 @@ class SetupState:
         exc = None
         while finalizers:
             fin = finalizers.pop()
+            print(fin)
             try:
                 fin()
             except TEST_OUTCOME as e:
