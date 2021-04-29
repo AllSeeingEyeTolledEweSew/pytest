@@ -391,7 +391,9 @@ class SetupState:
         exc = None
         while finalizers:
             fin = finalizers.pop()
-            print(fin)
+            sys.stderr.write(str.format("{}", fin))
+            sys.stderr.write("\n")
+            sys.stderr.flush()
             try:
                 fin()
             except TEST_OUTCOME as e:
