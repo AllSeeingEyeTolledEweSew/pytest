@@ -391,6 +391,7 @@ class SetupState:
         exc = None
         while finalizers:
             fin = finalizers.pop()
+            sys.stderr.write("callfinalizers: ")
             sys.stderr.write(str.format("{}", fin))
             sys.stderr.write("\n")
             sys.stderr.flush()

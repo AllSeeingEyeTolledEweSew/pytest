@@ -1025,6 +1025,10 @@ class FixtureDef(Generic[_FixtureValue]):
                 try:
                     func = self._finalizers.pop()
                     func()
+                    sys.stderr.write("fixturedef.finish: ")
+                    sys.stderr.write(str.format("{}", func))
+                    sys.stderr.write("\n")
+                    sys.stderr.flush()
                 except BaseException as e:
                     # XXX Only first exception will be seen by user,
                     #     ideally all should be reported.
