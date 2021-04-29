@@ -170,14 +170,26 @@ def _make_xunit_fixture(
         try:
             if teardown is not None:
                 if pass_self:
+                    sys.stderr.write("mxf.a\n")
+                    sys.stderr.flush()
                     teardown(self, request.function)
                 else:
+                    sys.stderr.write("mxf.b\n")
+                    sys.stderr.flush()
                     teardown()
+                sys.stderr.write("mxf.c\n")
+                sys.stderr.flush()
         finally:
             if pass_self:
+                sys.stderr.write("mxf.d\n")
+                sys.stderr.flush()
                 cleanup(self)
             else:
+                sys.stderr.write("mxf.e\n")
+                sys.stderr.flush()
                 cleanup()
+            sys.stderr.write("mxf.f\n")
+            sys.stderr.flush()
 
     return fixture
 
